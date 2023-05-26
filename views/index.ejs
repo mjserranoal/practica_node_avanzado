@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <% getLocales().forEach(locale =>{ %>
+      <a href="/change-locale/<%= locale %>"><%= locale %></a>&nbsp;
+  <% })%>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <h2><%= __('Listado de anuncios') %></h2>
+    <% anuncios.forEach(anuncio => { %>
+      <h3><%= anuncio.articulo %></h3>
+      <img src="<%= anuncio.foto%>" alt="">
+      <ul>
+        <li><%= __('Precio:') %> <%= anuncio.precio%>€</li>
+        <li><%= __('Tipo transacción:') %> <%= (anuncio.venta) ? 'Se vende' : 'Se Busca'%></li>
+        <li><%= __('Tags:') %> <%= anuncio.tags%></li>
+      </ul>
+      <% }) %>
+  </body>
+</html>
